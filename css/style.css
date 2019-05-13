@@ -1,0 +1,289 @@
+/*Estilos del body. Ademas se cargan estilos de posicionamiento para el left navigation */
+body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 10% 1fr;
+    grid-template-rows: 70px 1fr;
+    font-family: Lato,sans-serif;
+    grid-template-areas: "header header" 
+                         "aside pelis";
+    height: 100vh;
+}
+
+/* ESTILOS PARA EL HEADER */
+
+/*Estilos para que el contenedor movie tenga un efecto de sombra*/
+.Movie {
+    grid-area: header;
+    box-shadow: 0 2px 20px 5px #f2f2f2; /*Propiedad para dar sombra*/
+    z-index: 1; /*Propiedade para que el elemento se sobreponga sobre otro elemento. Los numeros definen a jerarquia de sobrepocision*/
+   
+}
+
+/*Grid Container*/
+.Movie-navbar {
+    padding: 0 3em;
+    display: grid;
+    grid-template-columns: 25% 1fr 20%; /*Indicamos que el header tiene 3 columnas*/
+    grid-auto-rows: 70px;
+    grid-template-areas: "brand form usuario";  /*definimos las areas del header con tres*/
+    grid-gap: 10px;
+}
+
+/*Estilos para el logo y el nombre del sitio*/
+.Movie-navbar-brand {
+    grid-area: brand;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+/*Estilos para posicionar el logo del sitio*/
+.Movie-navbar-brand-logo {
+    width: 50px;
+    margin: 0;
+}
+
+/*Estilo para que la imagen del logo ocupe el ancho del contenedor*/
+.Movie-navbar-brand-logo img {
+    width: 100%;
+}
+
+/*Estilos para el nombre del sitio*/
+.Movie-navbar-brand-nombre {
+    margin: 0;
+    color: #000000;
+    -webkit-text-stroke: #000000;
+}
+
+/*Estilos para posicionar el formulario de busqueda*/
+.Movie-navbar-form {
+    grid-area: form;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+/*Estilos para el cuadro de texto del formulario de busqueda*/
+.Movie-navbar-form-input {
+    width: 100%;
+    border-radius: .25rem;
+    box-shadow: none;
+    border: 1px solid #b2b1b6;
+    padding: .5em;
+}
+
+/*Estilos para el posicionamiento del contenedor del nombre e imagen de usuario*/
+.Movie-navbar-usuario {
+    grid-area: usuario;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+    text-decoration: none; /*Propiedad para quitar la decoracion del nombre de usuario ya que es una etique {a href}*/
+}
+
+/*Estilos para el nombre de usuario*/
+.Movie-navbar-usuario-nombre {
+    color: #000000;
+    font-weight: 700;
+    margin-right: 1em;
+}
+
+/*Estilos para la imagen de usuario*/
+.Movie-navbar-usuario-imagen {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* ESTILOS PARA LEFT NAVIGATION */
+
+/* Estilos para el aside menu */
+.Menu {
+    align-content: space-between;
+    background: #000000;
+    display: grid;
+    grid-area: aside;
+    padding: 3em 0;
+    z-index: 2;
+}
+
+/* Grid Container --- Estilos para la lista de iconos  */
+.Menu-list {
+    display: grid;
+    -webkit-box-pack: center;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 1em 0;
+    text-align: center;
+}
+
+/*Estilo para que el left navigation ocupe todo el navegador verticalmente*/
+.Menu-list-item {
+    padding-bottom: 1em;
+}
+
+/* Estilos para color de los iconos font awesome */
+.Menu-list-item a {
+    color: white;
+    text-decoration: none;
+}
+
+/*Estilos para el tamañano de los iconos y nombres*/
+.Menu-list-item a i {
+    font-size: 32px;
+    font-size: 2rem;
+}
+
+
+/* ESTILOS SECTION CONTENT */
+
+.Peliculas {
+    grid-area: pelis;
+    padding: 1em 3em;
+}
+
+.Peliculas-title {
+    font-size: 19.2px;
+    font-size: 1.2rem;
+}
+
+.Peliculas-flecha {
+    display: none;
+}
+
+.Peliculas-container {
+    display: grid;
+    grid-gap: 2em;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.Peliculas-container-item {
+    position: relative;
+    color: white;
+    overflow: hidden;
+    transition: .3s;
+    
+}
+
+.Peliculas-container-item-img {
+    width: 100%;
+    vertical-align: top;
+}
+
+/* Estilos para la descripcion de la pelicula */
+.Peliculas-container-item-overlay {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    color: white;
+    padding: .5em;
+    height: 50%;
+    transition: .5s;
+}
+
+.Peliculas-container-item-overlay-title {
+    margin: 0 0 .5em;
+}
+
+.Peliculas-container-item-overlay-parrafo {
+    opacity: 1;
+    transition: .3s;
+    margin: 0;
+    font-weight: 300;
+}
+
+
+.Peliculas-container-item:hover .Peliculas-container-item-overlay
+{
+    height:100%;
+    padding:0 .5em;
+}
+.Peliculas-container-item:hover .Peliculas-container-item-overlay-title
+{
+    padding-top:1em;
+}
+
+.Peliculas-container-item:hover .Peliculas-container-item-overlay-parrafo {
+    opacity: 1;
+}
+
+/* RESPONSIVE */
+
+
+@media screen and (max-width:1024px)
+{
+    body
+    {
+        height:100vh;
+    }
+
+    .Peliculas-container-item-overlay
+    {
+        height:20%;
+    }
+    .Peliculas-container-item-overlay-parrafo
+    {
+        opacity:0;
+        transition:.3s;
+    }
+}
+@media screen and (max-width:767px)
+{
+    /* Estilos responsive para left navigation */
+    /* body
+    {
+        grid-template-rows:1fr 1fr;
+        grid-template-columns:20% 1fr;
+    } */
+    .Movie
+    {
+        height:70px;
+        overflow:hidden;
+        transition:.3s
+    }
+
+    /*Estilo para que no se vea el nombre de usuario en responsive <767px*/
+    .Movie-navbar-usuario-nombre
+    {
+        display: none;
+    }
+
+    /*Estilo para que no se vea el formulario en responsive <767px*/
+    .Movie-navbar-form-input
+    {
+        grid-column-start: 3;
+    }
+   
+
+    /*Estilo para que el header sea responsive <767p*/
+    .Movie-navbar
+    {           
+        grid-template-columns:1fr 1fr;
+        grid-template-areas: "brand""usuario usuario""form"; /*Indicamos que en dispositos inferiores a 767 los elementos del header ocupen 2 columnas cada uno*/
+    }
+    .Peliculas
+    {
+        position:relative;       
+        
+    }
+    .Peliculas-container
+    {
+        grid-template-columns:1fr;
+        justify-content: center;
+    }
+    .Menu
+    {
+        position:relative;
+        left:-100%;
+        transition:.3s;
+    }
+} 
